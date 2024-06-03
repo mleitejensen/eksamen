@@ -8,7 +8,6 @@ const {requireAuth} = require("../middleware/requireAuth")
 router.post("/signup", signup)
 router.post("/login", login)
 
-router.use(requireAuth)
-router.post("/add", addToCart)
+router.patch("/add", requireAuth, addToCart)
 
 module.exports = router

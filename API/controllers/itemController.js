@@ -15,6 +15,29 @@ const PostNewProduct = async (req, res) => {
     }
 }
 
+const getProduct = async (req, res) => {
+    const {id} = req.params
+
+    try{
+        const product = await ItemModel.findById(id)
+        res.status(200).json(product)
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+}
+
+const getAllProducts = async (req, res) => {
+    try{
+        const products = await ItemModel.find()
+        res.status(200).json(products)
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+}
+
+
 module.exports = {
-    PostNewProduct
+    PostNewProduct,
+    getProduct,
+    getAllProducts,
 }
