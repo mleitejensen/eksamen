@@ -30,7 +30,7 @@ const getProduct = async (req, res) => {
 const getAllProducts = async (req, res) => {
     try{
         const products = await ItemModel.find()
-        res.status(200).json(products)
+        res.status(200).json(products).sort({ createdAt: 'desc'}).exec();
     }catch(error){
         res.status(400).json({ error: error.message })
     }
