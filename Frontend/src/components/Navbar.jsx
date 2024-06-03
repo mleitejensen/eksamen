@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <header>
         <nav>
-          <div>
+          <div className='navItem navLogo'>
             <Link to="/">
               <h1>Logo</h1>
             </Link>
@@ -22,20 +22,28 @@ const Navbar = () => {
           
           {user && (
             <>
-            <Link to={`/home/${user.username}`}>
-              <h1>Store - {user.username}</h1>
-            </Link>
-            <button onClick={handleClick}>Logout</button>
+            <div className='navItem navIndex'>
+              <Link to={`/home/${user.username}`}>
+                <h1>Store - {user.username}</h1>
+              </Link>
+            </div>
+
+            <div className='navItem navUser'>
+              <button onClick={handleClick}>Logout</button>
+            </div>
             </>
           )}
 
           {!user && (
-            <>
+          <>
+            <div className='navItem navIndex'>
 
             <Link to="/">
               <h1>Store</h1>
             </Link>
+            </div>
           
+            <div className='navItem navUser'>
             <div className='navLoginSignup'>
               <Link to="/sign-in">
                   <h1>Login</h1>
@@ -46,7 +54,8 @@ const Navbar = () => {
               </Link>
             </div>
 
-          </>
+          </div>
+        </>
         )}
         </nav>
     </header>

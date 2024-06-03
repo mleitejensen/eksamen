@@ -29,7 +29,23 @@ nav {
 nav button{
   font-size: 1.2em;
 }
+
+.navItem{
+  width: 30%;
+  min-width: 10%;
+  max-width: 30%;
+}
  
+.navLogo{
+  text-align: left;
+}
+.navIndex{
+  text-align: center;
+}
+.navUser{
+  text-align: right;
+}
+
 .navLoginSignup {
   display: flex;
 }
