@@ -11,7 +11,18 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
+  --primary: #ffffff;
+  --secondary: #e7e4e4;
+  --tertiary: #dad3d3;
+  --text: black;
+  --success: #1aac83;
+  --error: #e7195a;
+  --change: #F66B0E;
+  --loading: #6e705c;
 }
+
 
 a {
   font-weight: 500;
@@ -23,9 +34,8 @@ a:hover {
 }
 
 body {
+  background-color: var(--primary);
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }

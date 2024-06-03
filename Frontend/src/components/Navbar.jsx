@@ -20,12 +20,12 @@ const Navbar = () => {
 
         {!user && (
         <Link to="/">
-            <h1>Quotes</h1>
+            <h1>Store</h1>
         </Link>
         )}
         {user && (
         <Link to={`/home/${user.username}`}>
-            <h1>Quotes - {user.username}</h1>
+            <h1>Store - {user.username}</h1>
         </Link>
         )}
 
