@@ -9,6 +9,6 @@ router.post("/signup", signup)
 router.post("/login", login)
 
 router.use(requireAuth)
-router.post("add", addToCart)
+router.post("/add", addToCart)
 
 module.exports = router
