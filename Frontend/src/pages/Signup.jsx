@@ -1,14 +1,38 @@
-import { useAuthContext } from "../hooks/useAuthContext"
+import { useState } from "react"
+import { useSignup } from "../hooks/useSignup"
 
-const Singup = () => {
+const Signup = () => {
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [passwordCheck, setPasswordCheck] = useState("")
+    const {signup, isLoading, error} = useSignup()
 
-    const { user } = useAuthContext()
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        await signup(username, password, passwordCheck)
+    }
 
     return(
-        <div className="singup">
-            <h3>Singup</h3>
-       </div>
+        <>
+        <form className="loginForm" onSubmit={handleSubmit}>
+            <h2>Become a shopper today!</h2>
+            <input type="text" name="username" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}/> 
+            <br />
+            <input type="password" name="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <br />
+            <input type="password" name="password" placeholder="password" value={passwordCheck} onChange={(e) => setPasswordCheck(e.target.value)}/>
+            <br />
+
+            {/* error message here */}
+            <div className="errorBox">
+                {error && <div className="error">{error}</div>}
+            </div>
+
+            <button disabled={isLoading}>Sign up</button>
+        </form>
+        </>
     )
 }
 
-export default Singup
+export default Signup
