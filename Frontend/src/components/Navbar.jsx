@@ -14,41 +14,39 @@ const Navbar = () => {
   return (
     <header>
         <nav>
-        <Link to="/">
-          <h1>Logo</h1>
-        </Link>
-
-        {!user && (
-        <Link to="/">
-            <h1>Store</h1>
-        </Link>
-        )}
-        {user && (
-        <Link to={`/home/${user.username}`}>
-            <h1>Store - {user.username}</h1>
-        </Link>
-        )}
-
-        {user && (
-          <>
-            <div className='infoAndLogout'>
-            <Link to="/info">
-              <h1>Info</h1>
+          <div>
+            <Link to="/">
+              <h1>Logo</h1>
             </Link>
-              <button onClick={handleClick}>Logout</button>
-            </div>
-          </>
-        )}
-        {!user && (
-          <div className='navLoginSignup'>
-            <Link to="/sign-in">
-                <h1>Login</h1>
-            </Link>
-            <h1>/</h1>
-            <Link to="/sign-up">
-                <h1>Signup</h1>
-          </Link>
           </div>
+          
+          {user && (
+            <>
+            <Link to={`/home/${user.username}`}>
+              <h1>Store - {user.username}</h1>
+            </Link>
+            <button onClick={handleClick}>Logout</button>
+            </>
+          )}
+
+          {!user && (
+            <>
+
+            <Link to="/">
+              <h1>Store</h1>
+            </Link>
+          
+            <div className='navLoginSignup'>
+              <Link to="/sign-in">
+                  <h1>Login</h1>
+              </Link>
+              <h1>/</h1>
+              <Link to="/sign-up">
+                  <h1>Signup</h1>
+              </Link>
+            </div>
+
+          </>
         )}
         </nav>
     </header>
