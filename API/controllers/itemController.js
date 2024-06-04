@@ -73,8 +73,13 @@ const getCategoryProducts = async (req, res) => {
 
 const getTypesAvailable = async (req, res) => {
     try{
+        let list = []
         const types = await TypeModel.find()
-        res.status(200).json({types})
+        types.forEach(e => {
+            list.push(e.type)
+        })
+
+        res.status(200).json({types: list})
     }catch(error){
         res.status(400).json({ error: error.message })
     }
