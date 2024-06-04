@@ -7,7 +7,7 @@ const Home = () => {
 
     const [name, setName] = useState(null)
     const [image, setImage] = useState(null)
-    const [type, setType] = useState("T-shirt")
+    const [type, setType] = useState("t-shirt")
     const [description, setDescription] = useState(null)
 
     const {post, error, isLoading, data} = usePost()
@@ -33,8 +33,8 @@ const Home = () => {
                 <div className="formLine">
                     <label htmlFor="genre">Sub-genre:</label>
                     <select name="genre" onChange={(e) => setType(e.target.value)}>
-                        <option value="T-shirt">T-shirt</option>
-                        <option value="Shirt">Shirt</option>
+                        <option value="t-shirt">T-shirt</option>
+                        <option value="shirt">Shirt</option>
                     </select>
                 </div>
 

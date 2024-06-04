@@ -60,10 +60,21 @@ const getNewestProducts = async (req, res) => {
     }
 } 
 
+const getCategoryProducts = async (req, res) => {
+    const {type} = req.params
+    try{
+        const products = await ItemModel.find({type}).sort({ createdAt: 'desc'}).exec();
+        res.status(200).json({products})
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+}
+
 
 module.exports = {
     PostNewProduct,
     getProduct,
     getAllProducts,
-    getNewestProducts
+    getNewestProducts,
+    getCategoryProducts
 }
