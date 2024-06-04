@@ -56,21 +56,8 @@ const addToCart = async (req, res) => {
     }
 }
 
-const checkAdmin = async (req, res) => {
-    try{
-        const user = await User.findById({_id: req.user._id})   
-        if(user.admin === false){
-            throw Error("User is not admin")
-        }
-        res.status(200).json({success: "User is admin"})
-    }catch(error){
-        res.status(400).json({ error: error.message })
-    }
-}
-
 module.exports = {
     signup,
     login,
     addToCart,
-    checkAdmin,
 }
