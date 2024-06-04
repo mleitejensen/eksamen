@@ -25,11 +25,15 @@ const Category = () => {
 
             <div className="productList">
                 {posts?.products && posts?.products.map((post) => (
-                    <div key={post?._id}>
-                        <div className="gridItem">
+                    <div key={post?._id} className="gridItem">
+                        <div className="product">
                             <img src={post?.image} alt={post.description} />
                             <h3>{post?.name}</h3>
                             <p>{post?.description}</p>
+                            <div className="buy">
+                                <button>Add to cart</button>
+                                <input type="number" defaultValue={1}/>
+                            </div>
                         </div>
                     </div>
                 ))}

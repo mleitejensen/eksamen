@@ -388,11 +388,20 @@ img{
 }
 .gridItem{
   width: 100%;
+  height: 100%;
   margin: auto;
   max-width: 300px;
-  max-height: 300px;
+  max-height: 500px;
+  min-width: 300px;
+  min-height: 500px;
 }
-.gridItem img{
+
+.product{
+  border: 2px solid black;
+  padding: 20px;
+  height: 400px;
+}
+.product img{
   object-fit: contain;
   width: 100%;
   max-width: 300px;
@@ -401,15 +410,31 @@ img{
   min-height: 200px;
   margin: auto;
 }
-
-.product{
-  border: 2px solid black;
-  padding: 20px;
+.product p{
+  min-height: 50px;
+  max-height: 50px;
+  overflow: hidden;
 }
+.product input{
+  margin: 0 10%;
+  max-width: 40px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+.buy{
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  
+}
+
 
 .type{
   text-align: center;
-  margin: 50px auto;
+  margin: 20px auto;
 }
 
 .title{
