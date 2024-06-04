@@ -2,10 +2,13 @@ import { useEffect, useState } from "react"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { usePost } from "../hooks/usePostProduct"
 import { useTypes } from "../hooks/useTypes"
-import { useCheckAdmin } from "../hooks/useCheckAdmin"
+import { useNavigate } from "react-router-dom";
+
 
 const Home = () => {
     const { user } = useAuthContext()
+
+    let navigate = useNavigate();
 
     const [name, setName] = useState(null)
     const [image, setImage] = useState(null)
@@ -15,8 +18,12 @@ const Home = () => {
     const {post, error, isLoading, data} = usePost()
     const { types, typeList } = useTypes()
 
+    
     useEffect(() => {
         types()
+        if(!user?.admin){
+            return navigate("/");
+        }
     },[])
 
     return(
