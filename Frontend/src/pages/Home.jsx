@@ -57,11 +57,13 @@ const Home = () => {
                     <textarea name="description" maxLength={100} onChange={(e) => setDescription(e.target.value)}></textarea>
                 </div>
 
+                <div className="messageBox">
+                    {error && <div className="error">{error}</div>}
+                    {data && <div className="success">{data.success}</div>}
+                </div>
+
                 <button disabled={isLoading} className="submit">Submit</button>
 
-                {error && <div className="error">{error}</div>}
-
-                {data && <div></div>}
             </form>
        </div>
     )

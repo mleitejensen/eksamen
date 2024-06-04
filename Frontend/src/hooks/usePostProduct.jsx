@@ -15,6 +15,7 @@ export const usePost = () => {
     const post = async (name, description, type, image) => {
         setError(null)
         setIsLoading(true)
+        setData(null)
 
         if(!user.token){
             return setError("you must be logged in")

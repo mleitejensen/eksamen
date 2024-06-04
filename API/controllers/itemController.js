@@ -5,12 +5,12 @@ const PostNewProduct = async (req, res) => {
     const {name, description, type, image} = req.body
     
     try{
-        if(!name?.trim() || !description?.trim() || !type?.trim(), !image?.trim()){
+        if(!name?.trim() || !description?.trim() || !type?.trim() || !image?.trim()){
             throw Error("All fields must be filled.")
         }
 
         const createItem = await ItemModel.create({userID: req.user._id, name, description, type, image})
-        res.status(200).json(createItem)
+        res.status(200).json({success: "Product posted", createItem})
 
     }catch(error){
         res.status(400).json({ error: error.message })
