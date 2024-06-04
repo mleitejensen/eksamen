@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { usePost } from "../hooks/usePostProduct"
+import { useTypes } from "../hooks/useTypes"
+import { useNavigate } from "react-router-dom";
+
 
 const Home = () => {
     const { user } = useAuthContext()
+
+    let navigate = useNavigate();
 
     const [name, setName] = useState(null)
     const [image, setImage] = useState(null)
@@ -11,6 +16,15 @@ const Home = () => {
     const [description, setDescription] = useState(null)
 
     const {post, error, isLoading, data} = usePost()
+    const { types, typeList } = useTypes()
+
+    
+    useEffect(() => {
+        types()
+        if(!user?.admin){
+            return navigate("/");
+        }
+    },[])
 
     return(
         <div className="home">
@@ -32,8 +46,9 @@ const Home = () => {
                 <div className="formLine">
                     <label htmlFor="genre">Sub-genre:</label>
                     <select name="genre" onChange={(e) => setType(e.target.value)}>
-                        <option value="t-shirt">T-shirt</option>
-                        <option value="shirt">Shirt</option>
+                        {typeList && typeList.map((type) => (
+                            <option key={type} value={type}>{type}</option>
+                        ))}
                     </select>
                 </div>
 
@@ -42,11 +57,13 @@ const Home = () => {
                     <textarea name="description" maxLength={100} onChange={(e) => setDescription(e.target.value)}></textarea>
                 </div>
 
+                <div className="messageBox">
+                    {error && <div className="error">{error}</div>}
+                    {data && <div className="success">{data.success}</div>}
+                </div>
+
                 <button disabled={isLoading} className="submit">Submit</button>
 
-                {error && <div className="error">{error}</div>}
-
-                {data && <div></div>}
             </form>
        </div>
     )

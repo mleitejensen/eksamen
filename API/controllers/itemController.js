@@ -1,15 +1,16 @@
 const ItemModel = require("../models/itemModel")
+const TypeModel = require("../models/typeModel")
 
 const PostNewProduct = async (req, res) => {
     const {name, description, type, image} = req.body
     
     try{
-        if(!name?.trim() || !description?.trim() || !type?.trim(), !image?.trim()){
+        if(!name?.trim() || !description?.trim() || !type?.trim() || !image?.trim()){
             throw Error("All fields must be filled.")
         }
 
         const createItem = await ItemModel.create({userID: req.user._id, name, description, type, image})
-        res.status(200).json(createItem)
+        res.status(200).json({success: "Product posted", createItem})
 
     }catch(error){
         res.status(400).json({ error: error.message })
@@ -70,11 +71,36 @@ const getCategoryProducts = async (req, res) => {
     }
 }
 
+const getTypesAvailable = async (req, res) => {
+    try{
+        let list = []
+        const types = await TypeModel.find()
+        types.forEach(e => {
+            list.push(e.type)
+        })
+
+        res.status(200).json({types: list})
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+}
+
+const postTypeAvailable = async (req, res) => {
+    const {type} = req.body
+    try{
+        const newType = await TypeModel.create({type})
+        res.status(200).json({newType})
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+}
 
 module.exports = {
     PostNewProduct,
     getProduct,
     getAllProducts,
     getNewestProducts,
-    getCategoryProducts
+    getCategoryProducts,
+    getTypesAvailable,
+    postTypeAvailable
 }

@@ -11,7 +11,7 @@ const signup = async (req, res) => {
     try{
         const user = await User.signup(username, password, passwordCheck)
         const token = createWebToken(user._id)
-        res.status(200).json({username, _id: user._id, token})
+        res.status(200).json({username, _id: user._id, admin: user.admin, token})
     }catch (error) {
         res.status(400).json({ error: error.message })
     }
@@ -23,7 +23,7 @@ const login = async (req, res) => {
     try{
       const user = await User.login(username, password)
       const token = createWebToken(user._id)
-      res.status(200).json({username, _id: user._id, token})
+      res.status(200).json({username, _id: user._id, admin: user.admin, token})
     }catch(error){
       res.status(400).json({ error: error.message })
     }
@@ -45,7 +45,7 @@ const addToCart = async (req, res) => {
         if(!exists){
             user.cart.push({itemID})
         }
-        
+
         const updatedUser = await user.save();
 
         //const cart = await User.findOneAndUpdate({_id: req.user._id},{$push: {cart: itemID}}, {new: true})
