@@ -1,16 +1,17 @@
 import { useEffect } from "react"
 import { useAuthContext } from "../hooks/useAuthContext"
-import { useNewestProducts } from "../hooks/useNewestProducts"
-import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom';
+import { useCategoryProducts } from "../hooks/useCategoryProducts";
 
 const Category = () => {
     const { user } = useAuthContext()
-    const {newestProducts, posts, isLoading, error} = useNewestProducts()
+    const { categoryProducts, posts, isLoading, error } = useCategoryProducts()
+
+    const {type} = useParams()
 
     useEffect(() => {
-        newestProducts()
-    },[])
+        categoryProducts(type)
+    },[type])
 
     useEffect(() => {
         console.log(posts)
@@ -20,8 +21,10 @@ const Category = () => {
     return(
         <div className="category">
 
+            {type}
+
             <div className="productList">
-                {posts?.newest && posts?.newest.map((post) => (
+                {posts?.products && posts?.products.map((post) => (
                     <div key={post?._id}>
                         <div className="gridItem">
                             <img src={post?.image} alt={post.description} />

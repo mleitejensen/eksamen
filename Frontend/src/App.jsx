@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
+import Category from './pages/Category'
 
 function App() {
   const { user } = useAuthContext()
@@ -39,6 +40,10 @@ function App() {
             <Route 
               path="/info" 
               element={<Index/>} 
+            />
+            <Route
+              path='/:type'
+              element={<Category/>}
             />
           </Routes>
         </div>
