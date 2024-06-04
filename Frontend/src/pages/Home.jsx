@@ -14,7 +14,6 @@ const Home = () => {
 
     return(
         <div className="home">
-            <h3>Home</h3>
 
             <form className="postForm" onSubmit={(e) => {
                     e.preventDefault()
