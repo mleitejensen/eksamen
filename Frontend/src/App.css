@@ -401,6 +401,11 @@ img{
   min-height: 200px;
   margin: auto;
 }
+
+.type{
+  text-align: center;
+  margin: 50px auto;
+}
  
 /* Media Queries */
 
