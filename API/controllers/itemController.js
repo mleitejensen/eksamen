@@ -1,4 +1,5 @@
 const ItemModel = require("../models/itemModel")
+const TypeModel = require("../models/typeModel")
 
 const PostNewProduct = async (req, res) => {
     const {name, description, type, image} = req.body
@@ -70,11 +71,21 @@ const getCategoryProducts = async (req, res) => {
     }
 }
 
+const getTypesAvailable = async (req, res) => {
+    try{
+        const types = await TypeModel.find()
+        res.status(200).json({types})
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+}
+
 
 module.exports = {
     PostNewProduct,
     getProduct,
     getAllProducts,
     getNewestProducts,
-    getCategoryProducts
+    getCategoryProducts,
+    getTypesAvailable
 }
