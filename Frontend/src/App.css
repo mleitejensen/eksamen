@@ -373,6 +373,11 @@ img{
   height: 70px;
 }
 
+
+.submit{
+  margin: auto;
+  width: 100%;
+}
  
 /* Media Queries */
 
