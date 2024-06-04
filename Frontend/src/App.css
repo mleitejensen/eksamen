@@ -329,8 +329,8 @@ img{
   margin: auto;
   max-width: 300px;
   max-height: 500px;
-  min-width: 300px;
-  min-height: 500px;
+  min-width: 100px;
+  min-height: 200px;
 }
 
 .product{
@@ -443,47 +443,20 @@ img{
  
 /* Media Queries */
 
-@media screen and (max-width: 900px) {
-  .publish button{
-    font-size: 0.7em;
+@media screen and (max-width: 1300px) {
+  .productList{
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media screen and (max-width: 800px) {
-
-  .post{
-    font-size: 2em;
+@media screen and (max-width: 900px) {
+  .productList{
+    grid-template-columns: 1fr;
   }
-
-  .post p {
-    font-size: 0.5em;
-  }
-
-  .publish input {
-    border: none;
-    border-bottom: 1px;
-  }
-   
-  .publish textarea {
-    font-size: 0.5em;
-  }
-  .publish input{
-    font-size: 0.5em;
-  }
-  .publish button{
-    font-size: 0.5em;
-  }
-  .randomPost p{
-    font-size: 1rem;
-  }
-  .quote{
-    font-size: 3rem;
-  }
-
 }
 @media screen and (max-width: 700px) {
-  .infoAndLogout a{
-    right: 110%;
+  nav button{
+    font-size: 1em;
   }
 
 }
