@@ -24,13 +24,6 @@ const Index = () => {
                         <p>{post?.description}</p>
                     </div>
                 ))}
-                {posts?.newest && posts?.newest.map((post) => (
-                    <div key={post?._id} className="gridItem">
-                        <img src={post?.image} alt={post.description} />
-                        <h3>{post?.name}</h3>
-                        <p>{post?.description}</p>
-                    </div>
-                ))}
             </div>
 
        </div>
