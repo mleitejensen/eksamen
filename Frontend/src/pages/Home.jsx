@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { usePost } from "../hooks/usePostProduct"
 import { useTypes } from "../hooks/useTypes"
+import { useCheckAdmin } from "../hooks/useCheckAdmin"
 
 const Home = () => {
     const { user } = useAuthContext()
@@ -12,12 +13,21 @@ const Home = () => {
     const [description, setDescription] = useState(null)
 
     const {post, error, isLoading, data} = usePost()
-
     const { types, typeList } = useTypes()
+    const { checkAdmin, admin, checkAdminIsLoading, checkAdminError } = useCheckAdmin()
 
     useEffect(() => {
+        checkAdmin()
         types()
     },[])
+
+    useEffect(() => {
+        console.log(admin)
+    },[admin])
+
+    useEffect(() => {
+        console.log(checkAdminError)
+    },[checkAdminError])
 
     useEffect(() => {
         console.log(typeList)
@@ -44,7 +54,7 @@ const Home = () => {
                     <label htmlFor="genre">Sub-genre:</label>
                     <select name="genre" onChange={(e) => setType(e.target.value)}>
                         {typeList && typeList.map((type) => (
-                            <option value={type}>{type}</option>
+                            <option key={type} value={type}>{type}</option>
                         ))}
                     </select>
                 </div>
