@@ -48,6 +48,7 @@ nav button{
 
 .navLoginSignup {
   display: flex;
+  justify-content: right;
 }
  
 header a {
@@ -84,7 +85,7 @@ header a {
   width: 80%;
   max-width: 300px; /* Adjusted */
   margin: 6rem auto;
-  padding: 5% 10%;
+  padding: 2% 5%;
 }
  
 .loginForm * {

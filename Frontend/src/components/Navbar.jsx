@@ -23,7 +23,7 @@ const Navbar = () => {
           {user && (
             <>
             <div className='navItem navIndex'>
-              <Link to={`/home/${user.username}`}>
+              <Link to={`/home`}>
                 <h1>Store - {user.username}</h1>
               </Link>
             </div>
