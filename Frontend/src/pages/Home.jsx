@@ -14,24 +14,10 @@ const Home = () => {
 
     const {post, error, isLoading, data} = usePost()
     const { types, typeList } = useTypes()
-    const { checkAdmin, admin, checkAdminIsLoading, checkAdminError } = useCheckAdmin()
 
     useEffect(() => {
-        checkAdmin()
         types()
     },[])
-
-    useEffect(() => {
-        console.log(admin)
-    },[admin])
-
-    useEffect(() => {
-        console.log(checkAdminError)
-    },[checkAdminError])
-
-    useEffect(() => {
-        console.log(typeList)
-    },[typeList])
 
     return(
         <div className="home">
