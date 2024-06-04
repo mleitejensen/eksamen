@@ -416,21 +416,38 @@ img{
   overflow: hidden;
 }
 .product input{
-  margin: 0 10%;
+  margin: 0 5%;
   max-width: 40px;
   font-size: 1rem;
   border-radius: 8px;
   border: 1px solid black;
 }
+.product button{
+  margin: auto;
+  border: none;
+}
+.product button:hover{
+  border: none;
+}
+.product button:focus{
+  outline: none;
+}
+
 .buy{
   display: flex;
-  
   background-color: #f0f0f0;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em; 
 }
+.buy:hover{
+  cursor: pointer;
+}
+.buy:active{
+  border: 1px solid black;
+}
+
 
 .singleProduct{
   border: 2px solid black;
@@ -469,6 +486,9 @@ img{
 }
 .singleProduct button:hover{
   border: none;
+}
+.singleProduct button:focus{
+  outline: none;
 }
 
 

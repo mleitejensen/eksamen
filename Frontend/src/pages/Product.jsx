@@ -1,10 +1,8 @@
-import { useAuthContext } from "../hooks/useAuthContext"
 import { useParams } from 'react-router-dom';
 import { useGetProduct } from "../hooks/useGetProduct";
 import { useEffect } from "react";
 
 const Product = () => {
-    const { user } = useAuthContext()
 
     const {productId} = useParams()
     const { getProduct, product, isLoading, error } = useGetProduct()
@@ -12,10 +10,6 @@ const Product = () => {
     useEffect(() => {
         getProduct(productId)
     },[])
-
-    useEffect(() => {
-        console.log(product)
-    },[product])
 
     return(
         <div className="productPage">
@@ -26,9 +20,9 @@ const Product = () => {
                     <img src={product?.image} alt={product.description} />
                     <h3>{product?.name}</h3>
                     <p>{product?.description}</p>
-                    <div className="buy">
+                    <div className="buy" onClick={() => console.log("clicked buy")}>
                         <button>Add to cart</button>
-                        <input type="number" defaultValue={1}/>
+                        <input type="number" defaultValue={1} onClick={(e) => e.stopPropagation()}/>
                     </div>
                 </div>
             </>
