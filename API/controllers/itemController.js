@@ -36,9 +36,28 @@ const getAllProducts = async (req, res) => {
     }
 }
 
+const getNewestProducts = async (req, res) => {
+    try{
+        let types = []
+        const findAllTypes = await ItemModel.find()
+
+        findAllTypes.forEach(e => {
+            if(!types.includes(e.type)){
+                types.push(e.type)
+            }
+        });
+
+
+        res.status(200).json({types})
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+} 
+
 
 module.exports = {
     PostNewProduct,
     getProduct,
     getAllProducts,
+    getNewestProducts
 }
