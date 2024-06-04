@@ -16,7 +16,10 @@ const Home = () => {
         <div className="home">
             <h3>Home</h3>
 
-            <form className="postForm" onSubmit={() => post(name, description, type, image)}>
+            <form className="postForm" onSubmit={(e) => {
+                    e.preventDefault()
+                    post(name, description, type, image)
+                }}>
                 <div className="formLine">
                     <label htmlFor="name">Apparel name:</label>
                     <input type="text" name="name" onChange={(e) => setName(e.target.value)}/>
@@ -30,8 +33,8 @@ const Home = () => {
                 <div className="formLine">
                     <label htmlFor="genre">Sub-genre:</label>
                     <select name="genre" onChange={(e) => setType(e.target.value)}>
-                        <option>T-shirt</option>
-                        <option>Shirt</option>
+                        <option value="T-shirt">T-shirt</option>
+                        <option value="Shirt">Shirt</option>
                     </select>
                 </div>
 
