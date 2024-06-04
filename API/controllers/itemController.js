@@ -80,6 +80,15 @@ const getTypesAvailable = async (req, res) => {
     }
 }
 
+const postTypeAvailable = async (req, res) => {
+    const {type} = req.body
+    try{
+        const newType = await TypeModel.create({type})
+        res.status(200).json({newType})
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+}
 
 module.exports = {
     PostNewProduct,
@@ -87,5 +96,6 @@ module.exports = {
     getAllProducts,
     getNewestProducts,
     getCategoryProducts,
-    getTypesAvailable
+    getTypesAvailable,
+    postTypeAvailable
 }
