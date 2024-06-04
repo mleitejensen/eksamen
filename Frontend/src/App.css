@@ -387,8 +387,8 @@ img{
   grid-gap: 10px;
 }
 .gridItem{
-  border: 2px solid black;
-  padding: 20px;
+  width: 100%;
+  margin: auto;
   max-width: 300px;
   max-height: 300px;
 }
@@ -400,6 +400,11 @@ img{
   max-height: 200px;
   min-height: 200px;
   margin: auto;
+}
+
+.product{
+  border: 2px solid black;
+  padding: 20px;
 }
 
 .type{
