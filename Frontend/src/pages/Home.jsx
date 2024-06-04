@@ -12,7 +12,7 @@ const Home = () => {
 
     const [name, setName] = useState(null)
     const [image, setImage] = useState(null)
-    const [type, setType] = useState("t-shirt")
+    const [type, setType] = useState(null)
     const [description, setDescription] = useState(null)
 
     const {post, error, isLoading, data} = usePost()
@@ -25,6 +25,10 @@ const Home = () => {
             return navigate("/");
         }
     },[])
+
+    useEffect(() => {
+        setType(typeList[0])
+    },[typeList])
 
     return(
         <div className="home">
