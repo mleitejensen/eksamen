@@ -18,13 +18,11 @@ const Product = () => {
     },[product])
 
     return(
-        <div className="category">
-
-            <h1 className="title">Product Page - {productId}</h1>
+        <div className="productPage">
 
             {product && 
             <>
-                <div className="product">
+                <div className="singleProduct">
                     <img src={product?.image} alt={product.description} />
                     <h3>{product?.name}</h3>
                     <p>{product?.description}</p>
