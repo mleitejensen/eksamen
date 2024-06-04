@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { usePost } from "../hooks/usePostProduct"
 
@@ -7,7 +7,7 @@ const Home = () => {
 
     const [name, setName] = useState(null)
     const [image, setImage] = useState(null)
-    const [type, setType] = useState(null)
+    const [type, setType] = useState("T-shirt")
     const [description, setDescription] = useState(null)
 
     const {post, error, isLoading, data} = usePost()
@@ -43,9 +43,11 @@ const Home = () => {
                     <textarea name="description" maxLength={100} onChange={(e) => setDescription(e.target.value)}></textarea>
                 </div>
 
-                <button className="submit">Submit</button>
+                <button disabled={isLoading} className="submit">Submit</button>
 
                 {error && <div className="error">{error}</div>}
+
+                {data && <div></div>}
             </form>
        </div>
     )

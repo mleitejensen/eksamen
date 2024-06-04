@@ -4,7 +4,7 @@ const PostNewProduct = async (req, res) => {
     const {name, description, type, image} = req.body
     
     try{
-        if(!name.trim() || !description.trim() || !type.trim(), !image.trim()){
+        if(!name?.trim() || !description?.trim() || !type?.trim(), !image?.trim()){
             throw Error("All fields must be filled.")
         }
 
