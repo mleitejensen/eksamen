@@ -38,7 +38,9 @@ const getAllProducts = async (req, res) => {
 
 const getNewestProducts = async (req, res) => {
     try{
+        let newest = []
         let types = []
+        
         const findAllTypes = await ItemModel.find()
 
         findAllTypes.forEach(e => {
@@ -47,8 +49,12 @@ const getNewestProducts = async (req, res) => {
             }
         });
 
+        for(const type of types){
+            const products = await ItemModel.find({type}).sort({ createdAt: 'desc'}).exec();
+            newest.push(products[0])
+        }
 
-        res.status(200).json({types})
+        res.status(200).json({newest})
     }catch(error){
         res.status(400).json({ error: error.message })
     }
