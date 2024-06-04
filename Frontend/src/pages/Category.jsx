@@ -21,7 +21,7 @@ const Category = () => {
     return(
         <div className="category">
 
-            {type}
+            <h1 className="title">{type}</h1>
 
             <div className="productList">
                 {posts?.products && posts?.products.map((post) => (
