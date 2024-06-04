@@ -27,7 +27,9 @@ const Home = () => {
     },[])
 
     useEffect(() => {
-        setType(typeList[0])
+        if(typeList){
+            setType(typeList[0])
+        }
     },[typeList])
 
     return(
