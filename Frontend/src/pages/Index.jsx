@@ -24,6 +24,10 @@ const Index = () => {
                             <img src={post?.image} alt={post.description} />
                             <h3>{post?.name}</h3>
                             <p>{post?.description}</p>
+                            <div className="buy">
+                                <button>Add to cart</button>
+                                <input type="number" defaultValue={1}/>
+                            </div>
                         </div>
                         
                         <Link to={`/${post?.type}`}>
