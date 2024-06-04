@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { usePost } from "../hooks/usePostProduct"
+import { useTypes } from "../hooks/useTypes"
 
 const Home = () => {
     const { user } = useAuthContext()
@@ -11,6 +12,16 @@ const Home = () => {
     const [description, setDescription] = useState(null)
 
     const {post, error, isLoading, data} = usePost()
+
+    const { types, typeList } = useTypes()
+
+    useEffect(() => {
+        types()
+    },[])
+
+    useEffect(() => {
+        console.log(typeList)
+    },[typeList])
 
     return(
         <div className="home">
@@ -32,8 +43,9 @@ const Home = () => {
                 <div className="formLine">
                     <label htmlFor="genre">Sub-genre:</label>
                     <select name="genre" onChange={(e) => setType(e.target.value)}>
-                        <option value="t-shirt">T-shirt</option>
-                        <option value="shirt">Shirt</option>
+                        {typeList && typeList.map((type) => (
+                            <option value={type}>{type}</option>
+                        ))}
                     </select>
                 </div>
 
