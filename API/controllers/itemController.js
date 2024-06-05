@@ -95,6 +95,16 @@ const postTypeAvailable = async (req, res) => {
     }
 }
 
+const deleteProduct = async (req, res) => {
+    const {id} = req.body
+    try{
+        const del = await ItemModel.findByIdAndDelete(id)
+        res.json({success: "Deleted product", product})
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+}
+
 module.exports = {
     PostNewProduct,
     getProduct,
@@ -102,5 +112,6 @@ module.exports = {
     getNewestProducts,
     getCategoryProducts,
     getTypesAvailable,
-    postTypeAvailable
+    postTypeAvailable,
+    deleteProduct,
 }
