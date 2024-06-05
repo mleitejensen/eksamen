@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const Info = () => {
 
     return(
@@ -20,6 +22,8 @@ const Info = () => {
             <p>
                 When you are satisfied with your product, hit the submit button. 
             </p>
+
+            <p className="help">Click <Link to="/home">here</Link> to go back.</p>
 
             <img src="/1.JPG" alt="Info" />
 
