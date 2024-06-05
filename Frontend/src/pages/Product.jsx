@@ -76,7 +76,7 @@ const Product = () => {
                             e.preventDefault()
                             editProduct(product?._id, description, type, image)
                         }}>Edit</button>
-                        <button className='delete' onClick={(e) => {
+                        <button disabled={deleteIsLoading} className='delete' onClick={(e) => {
                             e.preventDefault()
                             deleteProduct(product?._id)
                         }}>Delete</button>
