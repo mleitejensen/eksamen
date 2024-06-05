@@ -9,6 +9,7 @@ import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
 import Category from './pages/Category'
 import Product from './pages/Product'
+import Info from './pages/Info'
 import Test from './pages/Test'
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
             />
             <Route 
               path="/info" 
-              element={<Index/>} 
+              element={<Info/>} 
             />
             <Route
               path='/type/:type'
