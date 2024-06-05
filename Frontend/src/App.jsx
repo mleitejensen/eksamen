@@ -43,12 +43,12 @@ function App() {
               element={<Index/>} 
             />
             <Route
-              path='/product/:productId'
-              element={<Product/>}
+              path='/type/:type'
+              element={<Category/>}
             />
             <Route
-              path='/:type'
-              element={<Category/>}
+              path='/:productId'
+              element={<Product/>}
             />
           </Routes>
         </div>

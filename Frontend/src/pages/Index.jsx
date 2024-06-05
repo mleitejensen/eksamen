@@ -22,7 +22,7 @@ const Index = () => {
                     <div key={post?._id} className="gridItem">
                         <div className="product">
                             <img src={post?.image} alt={post.description} />
-                            <Link to={`/product/${post?._id}`}>
+                            <Link to={`/${post?._id}`}>
                                 <h3>{post?.name}</h3>
                              </Link>
                             <p>{post?.description}</p>
@@ -32,7 +32,7 @@ const Index = () => {
                             </div>
                         </div>
                         
-                        <Link to={`/${post?.type}`}>
+                        <Link to={`/type/${post?.type}`}>
                             <p className="type">{post?.type}</p>
                         </Link>
                     </div>
