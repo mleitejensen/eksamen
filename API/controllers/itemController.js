@@ -95,6 +95,37 @@ const postTypeAvailable = async (req, res) => {
     }
 }
 
+const deleteProduct = async (req, res) => {
+    const {id} = req.body
+    try{
+        const del = await ItemModel.findByIdAndDelete(id)
+        res.json({success: "Deleted product", del})
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+}
+
+const editProduct = async (req, res) => {
+    const {productId, newDescription, newImage, newType} = req.body
+    try{
+        if(!productId?.trim() || !newDescription?.trim() || !newType?.trim() || !newImage?.trim()){
+            throw Error("All fields must be filled.")
+        }
+
+        findProduct = await ItemModel.findOne({_id: productId})
+
+        if(findProduct?.description === newDescription && findProduct?.image === newImage && findProduct?.type === newType){
+            throw Error("No changes were made")
+        }
+
+        const updateProduct = await ItemModel.findOneAndUpdate({_id: productId}, {description: newDescription, image: newImage}, {new: true})
+
+        res.status(200).json({success: "Edited product", updateProduct})
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+}
+
 module.exports = {
     PostNewProduct,
     getProduct,
@@ -102,5 +133,7 @@ module.exports = {
     getNewestProducts,
     getCategoryProducts,
     getTypesAvailable,
-    postTypeAvailable
+    postTypeAvailable,
+    deleteProduct,
+    editProduct,
 }
