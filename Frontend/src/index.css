@@ -1,17 +1,18 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: sans-serif, Calibri, 'Trebuchet MS';
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --primary: #ffffff;
+  --secondary: #e7e4e4;
+  --tertiary: #dad3d3;
+  --text: black;
+  --success: #1aac83;
+  --error: #e7195a;
+  --change: #F66B0E;
+  --loading: #6e705c;
 }
+
 
 a {
   font-weight: 500;
@@ -23,15 +24,14 @@ a:hover {
 }
 
 body {
+  background-color: var(--primary);
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2em;
   line-height: 1.1;
 }
 
@@ -42,7 +42,6 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -52,6 +51,20 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media screen and (max-width: 800px) {
+  h1{
+    font-size: 1em;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  h1{
+    font-size: 0.7em;
+  }
+
 }
 
 @media (prefers-color-scheme: light) {

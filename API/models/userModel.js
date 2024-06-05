@@ -2,11 +2,16 @@ const mongoose = require('mongoose');
 const bcrypt = require("bcrypt")
 
 const cartSchema = new mongoose.Schema({
-    items: {
-        type: Array,
-        default: []
+    itemID: {
+        type: String,
+        required: true,
+    },
+    quantity: {
+        type: Number,
+        required: true,
+        default: 1
     }
-})
+}, {timestamps: true})
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -45,9 +50,8 @@ userSchema.statics.signup = async function(username, password, passwordCheck) {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
-    const user = await this.create({ username, password: hash , admin: false, cart: {items: []}})
+    const user = await this.create({ username, password: hash , admin: false })
 
-    console.log(`[userModel] ${user.username} created`)
     return user
 }
 
@@ -66,7 +70,6 @@ userSchema.statics.login = async function(username, password) {
   if (!match) {
     throw Error('Incorrect password')
   }
-  console.log(`[userModel] ${user.username} logged in`)
   return user
 }
 
