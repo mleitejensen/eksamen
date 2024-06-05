@@ -70,9 +70,9 @@ const Product = () => {
                         {deleteError && <div className="error">{deleteError}</div>}
                         {deleteData && <div className='success'>{deleteData.success}</div>}
                     </div>
-
+                    
                     <div className='buttonBox'>
-                        <button disabled={editIsLoading} className="edit" onSubmit={(e) => {
+                        <button disabled={editIsLoading} className="edit" onClick={(e) => {
                             e.preventDefault()
                             editProduct(product?._id, description, type, image)
                         }}>Edit</button>
@@ -83,6 +83,7 @@ const Product = () => {
                     </div>
 
                 </form>
+                
                 </>
                 }
             </>

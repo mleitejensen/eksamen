@@ -17,7 +17,7 @@ export const useEditProduct = () => {
         setIsLoading(true)
         setData(null)
 
-        if(!user.token){
+        if(!user?.token){
             return setError("you must be logged in")
         }
 
@@ -25,19 +25,14 @@ export const useEditProduct = () => {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
-                'Authorization': `Bearer ${user.token}`
+                'Authorization': `Bearer ${user?.token}`
             },
             body: JSON.stringify({productId, newDescription: description, newType: type, newImage: image})
         })
         const json = await response.json()
 
         if(!response.ok){
-            if(response.status === 401){
-                logout()
-                alert("User session expired, you have been logged out.")
-            }else{
-                setError(json.error)
-            }
+            setError(json.error)
             setIsLoading(false)
         }
         if(response.ok){

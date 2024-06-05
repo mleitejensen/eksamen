@@ -9,6 +9,7 @@ import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
 import Category from './pages/Category'
 import Product from './pages/Product'
+import Test from './pages/Test'
 
 function App() {
   const { user } = useAuthContext()
@@ -45,6 +46,10 @@ function App() {
             <Route
               path='/type/:type'
               element={<Category/>}
+            />
+            <Route
+              path='/test/:productId'
+              element={<Test/>}
             />
             <Route
               path='/:productId'
