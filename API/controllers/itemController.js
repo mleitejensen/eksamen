@@ -99,7 +99,7 @@ const deleteProduct = async (req, res) => {
     const {id} = req.body
     try{
         const del = await ItemModel.findByIdAndDelete(id)
-        res.json({success: "Deleted product", product})
+        res.json({success: "Deleted product", del})
     }catch(error){
         res.status(400).json({ error: error.message })
     }

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useTypes } from '../hooks/useTypes';
 import { useEditProduct } from '../hooks/useEditProduct';
+import { useDeleteProduct } from '../hooks/useDeleteProduct';
 
 const Product = () => {
     const { user } = useAuthContext()
@@ -18,6 +19,8 @@ const Product = () => {
     const { types, typeList } = useTypes()
 
     const {editProduct, editError, editIsLoading, editData} = useEditProduct()
+    const {deleteProduct, deleteError, deleteIsLoading, deleteData} = useDeleteProduct()
+
 
     useEffect(() => {
         getProduct(productId)
@@ -36,10 +39,7 @@ const Product = () => {
             <>
                 {product && 
                 <>
-                    <form className="postForm" onSubmit={(e) => {
-                        e.preventDefault()
-                        editProduct(product?._id, description, type, image)
-                    }}>
+                    <form className="postForm">
                     <div className="formLine">
                         <label htmlFor="name">Apparel name:</label>
                         <p>{product?.name}</p>
@@ -67,11 +67,19 @@ const Product = () => {
                     <div className="messageBox">
                         {editError && <div className="error">{editError}</div>}
                         {editData && <div className='success'>{editData.success}</div>}
+                        {deleteError && <div className="error">{deleteError}</div>}
+                        {deleteData && <div className='success'>{deleteData.success}</div>}
                     </div>
 
                     <div className='buttonBox'>
-                        <button disabled={editIsLoading} className="edit">Edit</button>
-                        <button className='delete'>Delete</button>
+                        <button disabled={editIsLoading} className="edit" onSubmit={(e) => {
+                            e.preventDefault()
+                            editProduct(product?._id, description, type, image)
+                        }}>Edit</button>
+                        <button className='delete' onClick={(e) => {
+                            e.preventDefault()
+                            deleteProduct(product?._id)
+                        }}>Delete</button>
                     </div>
 
                 </form>

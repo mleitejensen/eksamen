@@ -21,8 +21,8 @@ export const useDeleteProduct = () => {
             return setError("you must be logged in")
         }
 
-        const response = await fetch(`${baseURL}/edit`, {
-            method: "PATCH",
+        const response = await fetch(`${baseURL}/delete`, {
+            method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
                 'Authorization': `Bearer ${user.token}`
