@@ -161,16 +161,22 @@ header a {
 }
 
 .delete{
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  font-size: 0.5em;
   color: white;
-  background-color: rgb(179, 1, 1);
+  background-color: var(--error);
+  transition: border-color 0.25s;
 }
 .delete:hover{
   color: black;
   border-color: black;
+}
+
+.edit{
+  background-color: #f0f0f0;
+}
+
+.buttonBox{
+  display: flex;
+  justify-content: space-evenly;
 }
 
 img{
@@ -244,11 +250,6 @@ img{
   display: flex;
   position: relative;
   translate: -25%;
-}
-
-.edit:hover{
-  cursor: pointer;
-  
 }
 
 .tooltip {

@@ -114,7 +114,7 @@ const editProduct = async (req, res) => {
 
         findProduct = await ItemModel.findOne({_id: productId})
 
-        if(findProduct?.description === newDescription && findProduct?.image === newImage && findProduct?.type === type){
+        if(findProduct?.description === newDescription && findProduct?.image === newImage && findProduct?.type === newType){
             throw Error("No changes were made")
         }
 

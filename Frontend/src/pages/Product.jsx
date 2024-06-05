@@ -69,7 +69,10 @@ const Product = () => {
                         {editData && <div className='success'>{editData.success}</div>}
                     </div>
 
-                    <button disabled={editIsLoading} className="submit">Submit</button>
+                    <div className='buttonBox'>
+                        <button disabled={editIsLoading} className="edit">Edit</button>
+                        <button className='delete'>Delete</button>
+                    </div>
 
                 </form>
                 </>
