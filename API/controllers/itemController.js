@@ -120,7 +120,7 @@ const editProduct = async (req, res) => {
 
         const updateProduct = await ItemModel.findOneAndUpdate({_id: productId}, {description: newDescription, image: newImage}, {new: true})
 
-        res.status(200).json(updateProduct)
+        res.status(200).json({success: "Edited product", updateProduct})
     }catch(error){
         res.status(400).json({ error: error.message })
     }
