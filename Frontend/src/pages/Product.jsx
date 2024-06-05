@@ -3,6 +3,7 @@ import { useGetProduct } from "../hooks/useGetProduct";
 import { useEffect, useState } from "react";
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useTypes } from '../hooks/useTypes';
+import { useEditProduct } from '../hooks/useEditProduct';
 
 const Product = () => {
     const { user } = useAuthContext()
@@ -16,10 +17,18 @@ const Product = () => {
 
     const { types, typeList } = useTypes()
 
+    const {editProduct, editError, editIsLoading, editData} = useEditProduct()
+
     useEffect(() => {
         getProduct(productId)
         types()
     },[])
+
+    useEffect(() => {
+        setType(product?.type)
+        setDescription(product?.description)
+        setImage(product?.image)
+    },[product])
 
     return(
         <div className="productPage">
@@ -29,7 +38,7 @@ const Product = () => {
                 <>
                     <form className="postForm" onSubmit={(e) => {
                         e.preventDefault()
-                        post(description, type, image)
+                        editProduct(product?._id, description, type, image)
                     }}>
                     <div className="formLine">
                         <label htmlFor="name">Apparel name:</label>
@@ -45,7 +54,7 @@ const Product = () => {
                         <label htmlFor="genre">Sub-genre:</label>
                         <select name="genre" defaultValue={product?.type} onChange={(e) => setType(e.target.value)}>
                             {typeList && typeList.map((type) => (
-                                <option selected={product?.type === type} key={type} value={type}>{type}</option>
+                                <option key={type} value={type}>{type}</option>
                             ))}
                         </select>
                     </div>
@@ -56,11 +65,11 @@ const Product = () => {
                     </div>
 
                     <div className="messageBox">
-                        {error && <div className="error">{error}</div>}
-                        
+                        {editError && <div className="error">{editError}</div>}
+                        {editData && <div className='success'>{editData.success}</div>}
                     </div>
 
-                    <button disabled={isLoading} className="submit">Submit</button>
+                    <button disabled={editIsLoading} className="submit">Submit</button>
 
                 </form>
                 </>

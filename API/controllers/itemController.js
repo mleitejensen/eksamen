@@ -106,19 +106,19 @@ const deleteProduct = async (req, res) => {
 }
 
 const editProduct = async (req, res) => {
-    const {productId, newName, newDescription, newImage, newType} = req.body
+    const {productId, newDescription, newImage, newType} = req.body
     try{
-        if(!productId?.trim() || !newName?.trim() || !newDescription?.trim() || !newType?.trim() || !newImage?.trim()){
+        if(!productId?.trim() || !newDescription?.trim() || !newType?.trim() || !newImage?.trim()){
             throw Error("All fields must be filled.")
         }
 
         findProduct = await ItemModel.findOne({_id: productId})
 
-        if(findProduct?.name === newName && findProduct?.description === newDescription && findProduct?.image === newImage && findProduct?.type === type){
+        if(findProduct?.description === newDescription && findProduct?.image === newImage && findProduct?.type === type){
             throw Error("No changes were made")
         }
 
-        const updateProduct = await ItemModel.findOneAndUpdate({_id: productId}, {name: newName, description: newDescription, image: newImage}, {new: true})
+        const updateProduct = await ItemModel.findOneAndUpdate({_id: productId}, {description: newDescription, image: newImage}, {new: true})
 
         res.status(200).json(updateProduct)
     }catch(error){
