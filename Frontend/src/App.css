@@ -465,7 +465,7 @@ img{
     grid-template-columns: 1fr;
   }
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   nav button{
     font-size: 1em;
   }
@@ -501,6 +501,13 @@ img{
 
   .quote{
     font-size: 1.8rem;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  nav button{
+    font-size: 0.7em;
   }
 
 }
