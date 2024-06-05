@@ -52,7 +52,6 @@ userSchema.statics.signup = async function(username, password, passwordCheck) {
 
     const user = await this.create({ username, password: hash , admin: false })
 
-    console.log(`[userModel] ${user.username} created`)
     return user
 }
 
@@ -71,7 +70,6 @@ userSchema.statics.login = async function(username, password) {
   if (!match) {
     throw Error('Incorrect password')
   }
-  console.log(`[userModel] ${user.username} logged in`)
   return user
 }
 

@@ -14,11 +14,6 @@ const Category = () => {
         categoryProducts(type)
     },[type])
 
-    useEffect(() => {
-        console.log(posts)
-    },[posts])
-
-
     return(
         <div className="category">
 

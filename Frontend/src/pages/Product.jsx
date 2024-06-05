@@ -97,7 +97,7 @@ const Product = () => {
                         <img src={product?.image} alt={product.description} />
                         <h3>{product?.name}</h3>
                         <p>{product?.description}</p>
-                        <div className="buy" onClick={() => console.log("clicked buy")}>
+                        <div className="buy">
                             <button>Add to cart</button>
                             <input type="number" defaultValue={1} onClick={(e) => e.stopPropagation()}/>
                         </div>
