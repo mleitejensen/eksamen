@@ -3,7 +3,7 @@ import { useAuthContext } from "../hooks/useAuthContext"
 import { usePost } from "../hooks/usePostProduct"
 import { useTypes } from "../hooks/useTypes"
 import { useNavigate } from "react-router-dom";
-
+import { Link } from 'react-router-dom'
 
 const Home = () => {
     const { user } = useAuthContext()
@@ -71,6 +71,8 @@ const Home = () => {
                 <button disabled={isLoading} className="submit">Submit</button>
 
             </form>
+
+            <p className="help">Need help? Click <Link to="/info">here</Link>.</p>
        </div>
     )
 }
