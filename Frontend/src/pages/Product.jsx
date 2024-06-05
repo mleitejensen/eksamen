@@ -42,7 +42,7 @@ const Product = () => {
                     <form className="postForm">
                     <div className="formLine">
                         <label htmlFor="name">Apparel name:</label>
-                        <p>{product?.name}</p>
+                        <p className='productName'>{product?.name}</p>
                     </div>
 
                     <div className="formLine">

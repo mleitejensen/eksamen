@@ -448,6 +448,10 @@ img{
   border: 1px solid black;
 }
 
+.productName{
+  margin: auto;
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 1300px) {
